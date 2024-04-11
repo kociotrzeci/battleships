@@ -1,18 +1,4 @@
-function Ship(length) {
-  return {
-    length: length,
-    hits: 0,
-    hit() {
-      if (this.isSunk()) {
-        return "you monster, it is a warcrime";
-      }
-      this.hits++;
-    },
-    isSunk() {
-      return this.hits === this.length;
-    },
-  };
-}
+const { Ship } = require("./ship");
 
 function Gameboard() {
   const boardSize = 10;
@@ -107,7 +93,5 @@ function Gameboard() {
     reciveAttack,
   };
 }
-
-const gameboard = Gameboard();
 
 module.exports = { Ship, Gameboard };

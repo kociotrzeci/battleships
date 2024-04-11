@@ -1,21 +1,8 @@
-const { Ship, Gameboard } = require("./main");
+const { Gameboard } = require("./gameboard");
 
 let gameboard;
 beforeEach(() => {
   gameboard = Gameboard();
-});
-test("Ship getting hit", () => {
-  const ship = Ship(3);
-  ship.hit();
-  expect(ship.hits).toBe(1);
-});
-
-test("Ship sunking", () => {
-  const ship = Ship(2);
-  expect(ship.isSunk()).toBe(false);
-  ship.hit();
-  ship.hit();
-  expect(ship.isSunk()).toBe(true);
 });
 
 test("Add ship horizontally", () => {
@@ -28,7 +15,7 @@ test("Add ship horizontally", () => {
   expect(gameboard.board[6][3].canBePlaced).toBe(true);
 });
 
-test("Add ship vertically", () => {
+test("Add ship.vertically", () => {
   gameboard.addShipToBoard(5, 5, 3, "vertical");
   gameboard.board[5][5].ship.hit();
   expect(gameboard.board[5][3].canBePlaced).toBe(true);
