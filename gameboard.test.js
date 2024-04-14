@@ -46,7 +46,7 @@ test("Shooting at gameboard", () => {
   expect(gameboard.reciveAttack(5, 5)).toBe(true);
   expect(gameboard.board[5][5].wasShoot).toBe(true);
   expect(gameboard.board[5][5].ship.hits).toBe(1);
-  expect(gameboard.reciveAttack(1, 2)).toBe(false);
+  expect(gameboard.reciveAttack(1, 2)).toBe(true);
   expect(gameboard.board[1][2].wasShoot).toBe(true);
 });
 

@@ -70,6 +70,9 @@ function Gameboard() {
     return x >= 0 && x < boardSize && y >= 0 && y < boardSize;
   }
   function reciveAttack(x, y) {
+    if (board[x][y].wasShoot) {
+      return false;
+    }
     board[x][y].wasShoot = true;
     if (board[x][y].ship) {
       board[x][y].ship.hit();
@@ -79,7 +82,7 @@ function Gameboard() {
       }
       return true;
     }
-    return false;
+    return true;
   }
   function checkRemainingShips() {
     if (remainingShips === 0) {
@@ -91,6 +94,8 @@ function Gameboard() {
     board,
     addShipToBoard,
     reciveAttack,
+    boardSize,
+    remainingShips,
   };
 }
 
