@@ -1,4 +1,4 @@
-const { Player } = require("./player");
+const { Player, simulateGame } = require("./player");
 let player1;
 let player2;
 beforeEach(() => {
@@ -16,34 +16,22 @@ test("Player shoots down enemys ship", () => {
 
 test("sinking all enemy ships", () => {
   player1.addShipToBoard(1, 1, 1, "horizontal");
+  player1.addShipToBoard(5, 5, 1, "horizontal");
+  player2.shoot(5, 5);
   expect(player2.shoot(1, 1)).toBe("All ships sunk!");
+});
+
+test("Player adds mutlitiple ships", () => {
+  player1.addShipToBoard(1, 1, 1, "horizontal");
+  player1.addShipToBoard(5, 5, 1, "horizontal");
+  expect(player1.gameboard.remainingShips.value).toBe(2);
 });
 
 test("Check random ship placement", () => {
   player1.autoAddShips();
-  expect(player1.gameboard.remainingShips).toBe(5);
-});
-/*
-test("AI plays game itself", () => {
-  player1.autoAddShips();
-  player2.autoAddShips();
-  expect(simulateGame()).toBe(true);
+  expect(player1.gameboard.remainingShips.value).toBe(5);
 });
 
-function simulateGame() {
-  let player1 = Player();
-  let player2 = Player();
-  player1.addEnemy(player2);
-  player2.addEnemy(player1);
-  player1.autoAddShips();
-  player2.autoAddShips();
-  while (
-    player1.shoot() !== "All ships sunk!" ||
-    player2.shoot() !== "All ships sunk!"
-  ) {
-    player1.gameboard.remainingShips;
-    player2.gameboard.remainingShips;
-  }
-  return true;
-}
-*/
+test("AI plays game itself", () => {
+  expect(simulateGame()).toBe(true);
+});

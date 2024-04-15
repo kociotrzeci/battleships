@@ -15,6 +15,11 @@ test("Add ship horizontally", () => {
   expect(gameboard.board[6][3].canBePlaced).toBe(true);
 });
 
+test("Ship counter", () => {
+  gameboard.addShipToBoard(1, 1, 1, "vertical");
+  expect(gameboard.remainingShips.value).toBe(1);
+});
+
 test("Add ship.vertically", () => {
   gameboard.addShipToBoard(5, 5, 3, "vertical");
   gameboard.board[5][5].ship.hit();

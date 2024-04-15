@@ -3,7 +3,7 @@ const { Ship } = require("./ship");
 function Gameboard() {
   const boardSize = 10;
   const board = [];
-  let remainingShips = 0;
+  let remainingShips = { value: 0 };
   for (let i = 0; i < boardSize; i++) {
     const row = [];
     for (let j = 0; j < boardSize; j++) {
@@ -32,7 +32,7 @@ function Gameboard() {
         forbidPlaces(row + i, column);
       }
     }
-    remainingShips++;
+    remainingShips.value++;
     return true;
   }
   function forbidPlaces(x, y) {
@@ -77,7 +77,7 @@ function Gameboard() {
     if (board[x][y].ship) {
       board[x][y].ship.hit();
       if (board[x][y].ship.isSunk()) {
-        remainingShips--;
+        remainingShips.value--;
         return checkRemainingShips();
       }
       return true;
@@ -85,7 +85,7 @@ function Gameboard() {
     return true;
   }
   function checkRemainingShips() {
-    if (remainingShips === 0) {
+    if (remainingShips.value === 0) {
       return "All ships sunk!";
     }
     return true;

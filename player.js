@@ -10,6 +10,8 @@ function Player() {
     let doIContinue = true;
     while (doIContinue) {
       const result = enemy.gameboard.reciveAttack(row, column);
+      row = Math.floor(Math.random() * gameboard.boardSize);
+      column = Math.floor(Math.random() * gameboard.boardSize);
       if (result === true) {
         return true;
       } else if (result === "All ships sunk!") {
@@ -24,8 +26,8 @@ function Player() {
     let row = null;
     let column = null;
     let ret = null;
-    let doubled3 = false;
-    for (let i = 2; i < 5; i++) {
+    let doubled3 = { value: false };
+    for (let i = 2; i <= 5; i++) {
       row = Math.floor(Math.random() * gameboard.boardSize);
       column = Math.floor(Math.random() * gameboard.boardSize);
       ret = addShipToBoard(
@@ -35,12 +37,11 @@ function Player() {
         Math.random() < 0.5 ? "horizontal" : "vertical"
       );
       if (ret == false) i--;
-      if (i === 3 && doubled3 === false) {
-        doubled3 = true;
+      if (i === 3 && doubled3.value === false) {
+        doubled3.value = true;
         i--;
       }
     }
-    gameboard.remainingShips = 5;
   }
   function addEnemy(_enemy) {
     enemy = _enemy;
@@ -54,23 +55,19 @@ function Player() {
   };
 }
 
-console.log(simulateGame());
-
 function simulateGame() {
   let player1 = Player();
   let player2 = Player();
   player1.addEnemy(player2);
   player2.addEnemy(player1);
-  player1.addShipToBoard(1, 1, 1, "horizontal");
-  player2.addShipToBoard(1, 1, 1, "horizontal");
+  player1.autoAddShips();
+  player2.autoAddShips();
   while (
-    player1.shoot() !== "All ships sunk!" ||
+    player1.shoot() !== "All ships sunk!" &&
     player2.shoot() !== "All ships sunk!"
   ) {
-    console.log(player1.gameboard.remainingShips);
-    console.log(player2.gameboard.remainingShips);
+    let test = 1;
   }
   return true;
 }
-console.log("Game over!");
-module.exports = { Player };
+module.exports = { Player, simulateGame };
