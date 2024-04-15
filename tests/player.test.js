@@ -1,4 +1,4 @@
-const { Player, simulateGame } = require("./player");
+const { Player, simulateGame } = require("../src/player");
 let player1;
 let player2;
 beforeEach(() => {
