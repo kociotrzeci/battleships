@@ -46,12 +46,16 @@ function Player() {
   function addEnemy(_enemy) {
     enemy = _enemy;
   }
+  function getEnemy() {
+    return enemy;
+  }
   return {
     gameboard,
     shoot,
     addShipToBoard,
     addEnemy,
     autoAddShips,
+    getEnemy,
   };
 }
 
