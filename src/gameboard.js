@@ -78,6 +78,9 @@ function Gameboard() {
       board[x][y].ship.hit();
       if (board[x][y].ship.isSunk()) {
         remainingShips.value--;
+        console.log(
+          "attack " + x + y + "remaining ships " + remainingShips.value
+        );
         return checkRemainingShips();
       }
       return true;

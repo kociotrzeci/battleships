@@ -57,8 +57,7 @@ body {
     bottom: 0;
   }
 }
-
-.cell.ship {
+#left-panel .cell.ship {
   background-color: gray;
 }
 .cell.shoot {
@@ -78,9 +77,11 @@ body {
   align-items: center;
   background-color: rgb(138, 184, 222);
   border-style: solid;
-  height: 95%;
+  border-width: 1px;
+  height: 97%;
   padding: 0px;
   margin: 0px;
+  aspect-ratio: 1;
 }
 span {
   height: 70%;

@@ -22,7 +22,14 @@ function Display(_container, player, mode, otherDisplay) {
 
   function attack(player) {
     return function (event) {
-      player.getEnemy().shoot(event.currentTarget.x, event.currentTarget.y);
+      if (
+        player
+          .getEnemy()
+          .shoot(event.currentTarget.x, event.currentTarget.y) ===
+        "All ships sunk!"
+      )
+        alert(player.getEnemy() + " won!");
+
       refresh();
       setTimeout(() => {
         player.shoot();
