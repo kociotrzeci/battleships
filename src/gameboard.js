@@ -50,7 +50,7 @@ function Gameboard() {
     if (orientation === "horizontal") {
       for (let i = 0; i < size; i++) {
         if (!checkBounds(row + i, column)) return false;
-        if (board[row][row + i].canBePlaced === false) return false;
+        if (board[row + i][column].canBePlaced === false) return false;
       }
     }
     if (orientation === "vertical") {
