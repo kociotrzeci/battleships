@@ -1,6 +1,6 @@
 import "./styles.scss";
 const { Player, simulateGame } = require("../src/player");
-const { Display } = require("../src/display");
+const { Display, drag } = require("../src/display");
 
 const player1 = Player();
 const player2 = Player();
@@ -10,3 +10,5 @@ player1.autoAddShips();
 player2.autoAddShips();
 const displayLeft = Display("left-panel", player1);
 const displayRight = Display("right-panel", player2, "AI", displayLeft);
+
+window.drag = drag;

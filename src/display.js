@@ -1,7 +1,5 @@
 function Display(_container, player, mode, otherDisplay) {
-  console.log("Display");
   const container = document.getElementById(_container);
-  console.log(player);
   for (let i = 0; i < player.gameboard.boardSize; i++) {
     const row = document.createElement("div");
     row.classList.add(`row`);
@@ -27,9 +25,16 @@ function Display(_container, player, mode, otherDisplay) {
           .getEnemy()
           .shoot(event.currentTarget.x, event.currentTarget.y) ===
         "All ships sunk!"
-      )
-        alert(player.getEnemy() + " won!");
+      ) {
+        refresh();
 
+        setTimeout(() => {
+          player.shoot();
+          refresh(alert(player.getEnemy() + " won!"));
+        }, 100);
+
+        return;
+      }
       refresh();
       setTimeout(() => {
         player.shoot();
@@ -51,7 +56,12 @@ function Display(_container, player, mode, otherDisplay) {
         if (player.gameboard.board[i][j].wasShoot) {
           cell.classList.add("shoot");
         }
-        if (player.gameboard.board[i][j].ship) cell.classList.add("ship");
+        if (player.gameboard.board[i][j].ship) {
+          cell.classList.add("ship");
+          if (player.gameboard.board[i][j].ship.isSunk())
+            cell.classList.add("sunk");
+        }
+
         j++;
       }
       i++;
@@ -61,4 +71,8 @@ function Display(_container, player, mode, otherDisplay) {
   return { refresh };
 }
 
-module.exports = { Display };
+function drag(event) {
+  console.log("put me down!");
+}
+
+module.exports = { Display, drag };
