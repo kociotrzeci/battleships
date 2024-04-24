@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Battleships</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script defer src="main.js"></script></head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Battleships </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<script defer src="main.js"></script></head>
-
-<body>
+  <body>
     <div id="header">
-        <p>Battleships</p>
+      <p>Battleships</p>
     </div>
-    <div id="content">
+    <div id="menuBar">
+      <div draggable="true" ondragstart='drag(event)'>
+        <div class="cell ship" id="1"></div>
+      </div>
+      <div draggable="true">
+        <div class="cell ship" id="2"></div>
+        <div class="cell ship" id="2"></div>
+      </div>
+            </div>
+      <div id="content">
         <div id="left-panel"></div>
         <div id="right-panel"></div>
+      </div>
+      <div id="footer">
+        <p>made by&nbsp</p>
+        <a href="https://github.com/kociotrzeci"> kociotrzeci</a>
+      </div>
     </div>
-    <div id="footer">
-        <p>made by&nbsp</p><a href="https://github.com/kociotrzeci"> kociotrzeci</a>
-    </div>
-    </div>
-
-</body>
-
+  </body>
 </html>
