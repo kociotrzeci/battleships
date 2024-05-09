@@ -1,5 +1,5 @@
-# ToDo
+# Battleships
 
-Next project from The Odins Project. Again - i underestimated enemy, and didint plan what ill do. \
-Task was about making JS app, trying write some SOLID code, but it went as always. \
-I learned about local storage, and date-fns
+So this time, i came prepared.
+This project was supposed to help me understand, testing in software development. Somehow, writing tests beforehand made me think, but testing was still tedious.
+Later, in this project, i learned how to write _better_ and more _proper_ tests, but I still need practise
