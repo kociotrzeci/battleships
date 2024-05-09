@@ -1,5 +1,6 @@
 function Display(_container, player, mode, otherDisplay) {
   const container = document.getElementById(_container);
+
   for (let i = 0; i < player.gameboard.boardSize; i++) {
     const row = document.createElement("div");
     row.classList.add(`row`);
@@ -52,7 +53,6 @@ function Display(_container, player, mode, otherDisplay) {
       j = 0;
     for (const row of container.children) {
       for (const cell of row.children) {
-        cell.classList.remove("black", "white");
         if (player.gameboard.board[i][j].wasShoot) {
           cell.classList.add("shoot");
         }
@@ -66,6 +66,13 @@ function Display(_container, player, mode, otherDisplay) {
       }
       i++;
       j = 0;
+    }
+  }
+  function reset() {
+    for (const row of container.children) {
+      for (const cell of row.children) {
+        cell.classList.remove("ship");
+      }
     }
   }
   return { refresh };

@@ -1,6 +1,6 @@
 const { Gameboard } = require("./gameboard");
 function Player() {
-  const gameboard = Gameboard();
+  let gameboard = Gameboard();
   let enemy = null;
   function shoot(row, column = null) {
     if (column === null) {
@@ -42,12 +42,18 @@ function Player() {
         i--;
       }
     }
+    console.log("generating ships");
   }
   function addEnemy(_enemy) {
     enemy = _enemy;
   }
   function getEnemy() {
     return enemy;
+  }
+  function reset() {
+    gameboard = null;
+    gameboard = Gameboard();
+    console.log("im here");
   }
   return {
     gameboard,
@@ -56,6 +62,7 @@ function Player() {
     addEnemy,
     autoAddShips,
     getEnemy,
+    reset,
   };
 }
 

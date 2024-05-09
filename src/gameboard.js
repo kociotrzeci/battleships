@@ -3,6 +3,7 @@ const { Ship } = require("./ship");
 function Gameboard() {
   const boardSize = 10;
   const board = [];
+  console.log("generating board");
   let remainingShips = { value: 0 };
   for (let i = 0; i < boardSize; i++) {
     const row = [];
