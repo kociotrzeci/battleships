@@ -67,6 +67,11 @@ body {
     background-color: black;
   }
 }
+.cell.shoot.ship {
+  span {
+    background-color: red;
+  }
+}
 
 .cell.ship.shoot.sunk {
   span {
